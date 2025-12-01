@@ -106,7 +106,6 @@ func hit_target() -> void:
 
 func destroy() -> void:
 	"""Destruye el proyectil"""
-	# Aquí se pueden agregar partículas de impacto
 	queue_free()
 
 func _on_lifetime_timeout() -> void:

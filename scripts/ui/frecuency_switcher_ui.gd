@@ -1,9 +1,6 @@
 extends PanelContainer
 class_name FrequencySwitcherUI
 
-## UI para cambiar frecuencia de torres seleccionadas
-
-## Referencias (asignar en el inspector o autoload)
 var selected_tower: TowerBase = null
 
 ## Nodos UI
@@ -12,7 +9,7 @@ var selected_tower: TowerBase = null
 @onready var frequency_label: Label = $Panel/VBoxContainer/CurrentFrequency
 @onready var buttons_container: HBoxContainer = $Panel/VBoxContainer/FrequencyButtons
 
-## Botones de frecuencia (creados dinámicamente)
+## Botones de frecuencia
 var frequency_buttons := {}
 
 ## ========================================

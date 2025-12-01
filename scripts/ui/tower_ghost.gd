@@ -1,9 +1,5 @@
 extends Node2D
 class_name TowerGhost
-
-## Script para el ghost/silueta de torre
-## Puede ser una escena separada o creado dinámicamente
-
 @onready var sprite: Sprite2D = $Sprite2D
 
 const VALID_COLOR = Color(0, 1, 0, 0.6)
@@ -23,7 +19,7 @@ func set_preview_scene(tower_scene: PackedScene) -> void:
 	
 	var temp_instance = tower_scene.instantiate()
 	
-	# Intentar obtener el sprite de la torre
+	#Obtener el sprite de la torre
 	if temp_instance.has_node("Sprite2D"):
 		var tower_sprite = temp_instance.get_node("Sprite2D")
 		sprite.texture = tower_sprite.texture

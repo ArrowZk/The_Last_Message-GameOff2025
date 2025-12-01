@@ -149,7 +149,7 @@ func set_frequency(freq: Frequency.FrequencyType) -> void:
 	# Recalcular stats
 	_recalculate_stats()
 	
-	# Actualizar visual
+	# Actualizar visual cuando este listos los sprites
 	#_update_frequency_visual()
 	
 	# Emitir señal
@@ -222,7 +222,7 @@ func _update_frequency_visual() -> void:
 	if sprite:
 		sprite.modulate = Color.WHITE.lerp(freq_color, 0.4)
 	
-	# Actualizar indicador
+	# Actualizar indicador posible sprite por encima del de la torre - quizas iluminacion
 	if frequency_indicator:
 		frequency_indicator.modulate = freq_color
 		frequency_indicator.visible = true

@@ -1,8 +1,5 @@
 extends Node
 
-## Script de prueba para el sistema de frecuencias
-## Agrega este script a un nodo en Main para testing rápido
-
 @onready var game_manager = $"../GameManager"
 
 func _ready():

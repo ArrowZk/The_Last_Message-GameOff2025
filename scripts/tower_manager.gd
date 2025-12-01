@@ -22,7 +22,6 @@ var current_tile_pos: Vector2i
 var occupied_cells := {}  # Dictionary: Vector2i -> Node (la torre)
 
 ## Ajuste de ancla para colocar la torre
-## Para isométrico, calculamos el offset basado en la altura de la torre
 var CELL_ANCHOR := Vector2(0,0)  # Centro del tile
 var TOWER_HEIGHT_OFFSET : float
 
@@ -183,7 +182,7 @@ func _on_tower_destroy_requested(tower: Node) -> void:
 	"""Callback cuando el jugador confirma destruir torre"""
 	print("💥 Destruyendo torre: ", tower.name)
 	
-	# Opcional: dar reembolso parcial
+	# Reembolso
 	var refund = 0
 	if "cost" in tower:
 		refund = int(tower.cost * 0.5)  # 50% de reembolso
@@ -192,7 +191,6 @@ func _on_tower_destroy_requested(tower: Node) -> void:
 			game_manager.add_currency(refund)
 			print("💰 Reembolso: ", refund)
 	
-	# Remover torre (ya tienes este método)
 	remove_tower(tower)
 
 func update_ghost_position() -> void:
@@ -216,8 +214,7 @@ func update_ghost_position() -> void:
 	var tile_size = Vector2(tilemap_layer.tile_set.tile_size)
 	var offset = tile_size * CELL_ANCHOR
 	
-	# Ajuste para isométrico: bajar la torre para que la base quede en el tile
-	# Restamos la mitad de la altura de la torre para que la base toque el suelo
+	#Offset para que sea visualmente aceptable
 	offset.y += TOWER_HEIGHT_OFFSET
 	
 	# Transformar a global
@@ -242,7 +239,7 @@ func check_placement_validity() -> void:
 	# Verificar custom data "TowerPlacement"
 	var can_build = tile_data.get_custom_data("TowerPlacement")
 	
-	# Debug temporal
+	# Debug
 	if can_build != true:
 		# print("⚠️ Tile ", current_tile_pos, " no tiene TowerPlacement habilitado")
 		pass
@@ -283,7 +280,7 @@ func place_tower() -> void:
 	var tile_size = Vector2(tilemap_layer.tile_set.tile_size)
 	var offset = tile_size * CELL_ANCHOR
 	
-	# Ajuste isométrico: bajar la torre
+	# Ajustar
 	offset.y += TOWER_HEIGHT_OFFSET
 	
 	var world_pos = tilemap_layer.to_global(local_cell_pos + offset)
@@ -297,7 +294,7 @@ func place_tower() -> void:
 		get_tree().current_scene.add_child(tower)
 	#play_sound("res://audio/sfx/tower_place.wav")
 	
-	# Configurar frecuencia global si existe GameManager
+	# Configurar frecuencia global
 	var game_manager = get_tree().get_first_node_in_group("game_manager")
 	if game_manager and tower.has_method("set_frequency"):
 		# Esperar un frame para que la torre se inicialice
@@ -318,8 +315,6 @@ func place_tower() -> void:
 
 func can_afford(cost: int) -> bool:
 	"""Verifica si el jugador puede pagar la torre"""
-	# TODO: Conectar con tu sistema de recursos/dinero
-	# Ejemplo cuando tengas GameManager con recursos:
 	var game_manager = get_node_or_null("/root/Main/GameManager")
 	if game_manager and game_manager.has_method("get_currency"):
 		return game_manager.get_currency() >= cost
@@ -327,7 +322,6 @@ func can_afford(cost: int) -> bool:
 
 func deduct_resources(cost: int) -> void:
 	"""Deduce el costo de la torre"""
-	# TODO: Conectar con tu sistema de recursos
 	var game_manager = get_node_or_null("/root/Main/GameManager")
 	if game_manager and game_manager.has_method("spend_currency"):
 		game_manager.spend_currency(cost)
@@ -361,21 +355,15 @@ func is_mouse_over_ui() -> bool:
 	"""Comprueba si el mouse está sobre un Control UI que bloquea clicks"""
 	var hovered = get_viewport().gui_get_hovered_control()
 	
-	# Si no hay control bajo el mouse, está libre
 	if hovered == null:
 		return false
 	
-	# Si el control es un Panel, MarginContainer, o VBoxContainer vacío que no bloquea clicks
-	# podemos permitir el click. Solo bloqueamos si es un Button u otro control interactivo.
-	
-	# Lista de controles que SÍ bloquean clicks
 	var blocking_controls = ["Button", "TextEdit", "LineEdit", "ItemList", "OptionButton", "CheckBox"]
 	
 	for control_type in blocking_controls:
 		if hovered.is_class(control_type):
 			return true
 	
-	# Si es otro tipo de control, verificar si tiene mouse_filter que bloquee
 	if hovered.mouse_filter == Control.MOUSE_FILTER_STOP:
 		return true
 	
@@ -405,7 +393,6 @@ func remove_tower(tower: Node) -> void:
 				occupied_cells.erase(cell)
 				break
 		
-		# Puedes agregar efectos, reembolso parcial, etc.
 		tower.queue_free()
 
 func get_all_towers() -> Array:

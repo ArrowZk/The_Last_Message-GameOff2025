@@ -17,7 +17,7 @@ signal base_destroyed()
 ## INICIALIZACIÓN
 ## ==================================================
 func _ready():
-	add_to_group("main_tower")  # Crítico para que enemigos la encuentren
+	add_to_group("main_tower") 
 	health = max_health
 	print("Main Tower initialized | Health: %d" % health)
 

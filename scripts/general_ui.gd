@@ -61,7 +61,6 @@ func _on_basic():
 func _on_tower_placed(tower: Node, position: Vector2) -> void:
 	update_status("TOWER PLACED IN: " + str(position))
 	
-	# Puedes actualizar contador de torres, recursos, etc.
 	update_tower_count()
 
 func _on_tower_selected(tower_data: Dictionary) -> void:
@@ -83,7 +82,6 @@ func update_tower_count() -> void:
 
 ## Ejemplo de función para actualizar UI con recursos
 func update_currency_display(player_currency: int) -> void:
-	# TODO: Actualizar label de recursos cuando tengas el sistema
 	currency_label.text = str("Currency: ", player_currency)
 
 func _on_radar():
