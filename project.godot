@@ -1,0 +1,41 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="The Last Message - Tower Defense"
+run/main_scene="uid://77saxwc727lf"
+config/features=PackedStringArray("4.5", "Mobile")
+run/max_fps=60
+boot_splash/bg_color=Color(0.1393409, 0.29910934, 0.24178648, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://dm1jq7l0vu4f1"
+config/icon="uid://c7jb2apwdn7kj"
+
+[autoload]
+
+GLOBAL="*res://scripts/global.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+
+[global_group]
+
+enemies=""
+game_manager=""
+main_tower=""
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"

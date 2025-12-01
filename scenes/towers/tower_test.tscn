@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv41fncxl7q5u"]
+
+[ext_resource type="PackedScene" uid="uid://c2dtellpkbh46" path="res://scenes/towers/tower_base.tscn" id="1_1vrrk"]
+[ext_resource type="Texture2D" uid="uid://dm1jq7l0vu4f1" path="res://assets/img/towers/TestTower.png" id="2_uft1j"]
+[ext_resource type="Script" uid="uid://csg1rjg7prnax" path="res://scripts/towers/basic_tower.gd" id="2_xn2lf"]
+[ext_resource type="PackedScene" uid="uid://dscnf7rftdmqh" path="res://scenes/extras/projectile01.tscn" id="4_xn2lf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xn2lf"]
+radius = 150.0
+
+[node name="TowerTest" instance=ExtResource("1_1vrrk")]
+script = ExtResource("2_xn2lf")
+height_offset = -24.0
+tower_sprite = ExtResource("2_uft1j")
+projectile_scene = ExtResource("4_xn2lf")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_uft1j")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(9.536743e-07, 43)
+scale = Vector2(1.6019737, 2.8958333)
+polygon = PackedVector2Array(-9.98768, -6.5611515, -5.953121e-07, -8.978417, 9.987679, -6.5611515, 0, -4)
+
+[node name="CollisionShape2D" parent="RangeArea" index="0"]
+shape = SubResource("CircleShape2D_xn2lf")

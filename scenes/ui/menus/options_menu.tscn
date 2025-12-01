@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://casoxkma1dqhu"]
+
+[ext_resource type="Script" uid="uid://kmocr0fywc5b" path="res://scripts/extras/options_menu.gd" id="1_8sva7"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8sva7")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterVolume" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MasterVolume"]
+layout_mode = 2
+text = "MASTER VOLUME"
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="Panel/VBoxContainer/MasterVolume"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+step = 2.0
+value = 30.0
+
+[node name="Resolution" type="HBoxContainer" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Resolution"]
+layout_mode = 2
+text = "RESOLUTION"
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="Panel/VBoxContainer/Resolution"]
+layout_mode = 2
+selected = 4
+item_count = 5
+popup/item_0/text = "1920x1080 (Full HD)"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1366x768"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720 (HD)"
+popup/item_3/id = 3
+popup/item_4/text = "1024x768"
+popup/item_4/id = 4
+
+[node name="Fullscreen" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Fullscreen"]
+layout_mode = 2
+text = "FULLSCREEN"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel/VBoxContainer/Fullscreen"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "BACK"
+
+[connection signal="value_changed" from="Panel/VBoxContainer/MasterVolume/Slider" to="." method="_on_slider_value_changed"]
+[connection signal="item_selected" from="Panel/VBoxContainer/Resolution/OptionButton" to="." method="_on_option_button_item_selected"]

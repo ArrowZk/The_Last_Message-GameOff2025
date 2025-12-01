@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://bnuts48dp8ryt"]
+
+[ext_resource type="PackedScene" uid="uid://d30pf6eni8sq6" path="res://scenes/enemies/enemy_base.tscn" id="1_v7ts0"]
+[ext_resource type="Texture2D" uid="uid://bx68ggloycgc6" path="res://assets/sprites/enemies/enemy2/Creep2-Attack-Left.png" id="2_v7ts0"]
+[ext_resource type="Texture2D" uid="uid://bcsdfpcjqvm1c" path="res://assets/sprites/enemies/enemy2/Creep2-Walk-Left.png" id="3_lp405"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs2kr"]
+atlas = ExtResource("2_v7ts0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sib1e"]
+atlas = ExtResource("2_v7ts0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cuw7"]
+atlas = ExtResource("2_v7ts0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mfil"]
+atlas = ExtResource("2_v7ts0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h65op"]
+atlas = ExtResource("2_v7ts0")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62mf2"]
+atlas = ExtResource("3_lp405")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cliep"]
+atlas = ExtResource("3_lp405")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrsrk"]
+atlas = ExtResource("3_lp405")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uj17u"]
+atlas = ExtResource("3_lp405")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oe4iy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs2kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sib1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cuw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mfil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h65op")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62mf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cliep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrsrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uj17u")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2oimw"]
+size = Vector2(11, 14)
+
+[node name="EnemyTank" instance=ExtResource("1_v7ts0")]
+max_health = 250.0
+speed = 30.0
+damage = 50.0
+reward = 50
+frequency = 2
+attack_cooldown = 3.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_oe4iy")
+animation = &"walk"
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_2oimw")

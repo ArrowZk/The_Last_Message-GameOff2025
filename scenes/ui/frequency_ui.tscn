@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://2oogb063pxsi"]
+
+[ext_resource type="Script" uid="uid://mtqgsg4l14jy" path="res://scripts/ui/frecuency_switcher_ui.gd" id="1_0s2gd"]
+
+[node name="FrequencyUI" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0s2gd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TowerName" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="CurrentFrequency" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="FrequencyButtons" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2

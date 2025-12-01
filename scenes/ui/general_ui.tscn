@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://cexh20rrq0cev"]
+
+[ext_resource type="Script" uid="uid://cc8hx10krh4ns" path="res://scripts/general_ui.gd" id="1_k4ek7"]
+[ext_resource type="Texture2D" uid="uid://dm1jq7l0vu4f1" path="res://assets/img/towers/TestTower.png" id="1_urydd"]
+[ext_resource type="PackedScene" uid="uid://cv41fncxl7q5u" path="res://scenes/towers/tower_test.tscn" id="2_j6hj0"]
+[ext_resource type="Theme" uid="uid://cusp5arno4sl5" path="res://tema_general.tres" id="4_2nnad"]
+[ext_resource type="PackedScene" uid="uid://c7783h2hnvb0m" path="res://scenes/ui/frecuency_gui.tscn" id="4_60uju"]
+[ext_resource type="PackedScene" uid="uid://c7lthod0r0qrq" path="res://scenes/towers/tower_aoe.tscn" id="4_mclgj"]
+[ext_resource type="Texture2D" uid="uid://bynmoy5n0j2vg" path="res://assets/img/towers/Tower2.png" id="5_bpprw"]
+
+[sub_resource type="Theme" id="Theme_01qti"]
+Button/constants/h_separation = 20
+Button/font_sizes/font_size = 20
+
+[node name="GeneralUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_k4ek7")
+basic_tower_scene = ExtResource("2_j6hj0")
+basic_tower_sprite = ExtResource("1_urydd")
+radar_tower_scene = ExtResource("4_mclgj")
+radar_tower_sprite = ExtResource("5_bpprw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_2nnad")
+
+[node name="VSplitContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="CurrencyLabel" type="Label" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+
+[node name="FrecuencyGUI" parent="MarginContainer/VSplitContainer" instance=ExtResource("4_60uju")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VSplitContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_01qti")
+
+[node name="T1Button" type="Button" parent="MarginContainer/VSplitContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Basic Tower"
+icon = ExtResource("1_urydd")
+alignment = 2
+
+[node name="T2Button" type="Button" parent="MarginContainer/VSplitContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Radar Tower"
+icon = ExtResource("5_bpprw")
+
+[node name="StatusLabel" type="Label" parent="MarginContainer/VSplitContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+step = 1.0
+
+[node name="WaveLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VSplitContainer/VBoxContainer/GridContainer/T1Button" to="." method="_on_t_1_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/VBoxContainer/GridContainer/T2Button" to="." method="_on_t_2_button_pressed"]

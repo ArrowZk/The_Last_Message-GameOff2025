@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://elitfp1lf7gy"]
+
+[ext_resource type="Script" uid="uid://bdqte8ri1ro71" path="res://scripts/extras/currency_popup_system.gd" id="1_enu2u"]
+
+[node name="CurrencyPopup" type="Node2D"]
+script = ExtResource("1_enu2u")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20

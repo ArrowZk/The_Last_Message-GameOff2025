@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c316a8n2o8gdq"]
+
+[ext_resource type="Script" uid="uid://bxj8gtfmlok7" path="res://scripts/ui/build_panel.gd" id="1_lwp6g"]
+[ext_resource type="Texture2D" uid="uid://dm1jq7l0vu4f1" path="res://assets/img/towers/TestTower.png" id="2_yhrly"]
+[ext_resource type="Texture2D" uid="uid://b242xx4j7lo2u" path="res://assets/img/towers/MainTower.png" id="3_61c74"]
+
+[node name="BuildPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lwp6g")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.20500001
+anchor_bottom = 0.096
+offset_right = -0.16001892
+offset_bottom = -0.20800018
+size_flags_horizontal = 0
+size_flags_vertical = 8
+auto_width = true
+auto_height = true
+item_count = 2
+max_columns = 3
+fixed_icon_size = Vector2i(50, 50)
+item_0/text = "Torre 1"
+item_0/icon = ExtResource("2_yhrly")
+item_1/text = "Torre 2"
+item_1/icon = ExtResource("3_61c74")
+item_1/disabled = true
+
+[connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]

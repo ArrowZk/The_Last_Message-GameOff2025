@@ -1,0 +1,51 @@
+[gd_scene load_steps=12 format=3 uid="uid://cq2vpil5uidhp"]
+
+[ext_resource type="Script" uid="uid://dpoxq33oiul60" path="res://scripts/game_manager.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://wxhaq2iujyht" path="res://scripts/level_manager.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://cds6lnsuuo2wi" path="res://scripts/test_frecuency_system.gd" id="1_tefeu"]
+[ext_resource type="Script" uid="uid://8i8ch8o10p20" path="res://scripts/enemy_manager.gd" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cexh20rrq0cev" path="res://scenes/ui/general_ui.tscn" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://c5sclmqtkve8j" path="res://scripts/tower_manager.gd" id="4_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cjvyswmiiyyqi" path="res://scenes/ui/tower_action_menu.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://def4nrs7km3g4" path="res://scenes/ui/menus/pause_menu.tscn" id="8_choun"]
+[ext_resource type="PackedScene" uid="uid://dcr4il2exyomo" path="res://scenes/ui/menus/victory_screen.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://bu1jvi2eg31sm" path="res://scenes/ui/menus/game_over_screen.tscn" id="10_eb6dy"]
+[ext_resource type="Script" uid="uid://mkqvxjvmxy54" path="res://scripts/extras/game_camera.gd" id="11_ya4ey"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Testing" type="Node" parent="."]
+script = ExtResource("1_tefeu")
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("1_sugp2")
+
+[node name="GameManager" type="Node" parent="." groups=["game_manager"]]
+script = ExtResource("1_0wfyh")
+
+[node name="EnemyManager" type="Node" parent="."]
+script = ExtResource("3_tbgi4")
+
+[node name="TowerManager" type="Node" parent="."]
+script = ExtResource("4_tefeu")
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GeneralUI" parent="CanvasLayer" instance=ExtResource("4_jyhfs")]
+
+[node name="TowerActionMenu" parent="CanvasLayer" instance=ExtResource("7_o6xl0")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_choun")]
+
+[node name="VictoryScreen" parent="." instance=ExtResource("9_ya4ey")]
+
+[node name="GameOverScreen" parent="." instance=ExtResource("10_eb6dy")]
+
+[node name="GameCamera" type="Camera2D" parent="."]
+script = ExtResource("11_ya4ey")

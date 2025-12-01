@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgo3wx4mdx1al"]
+
+[ext_resource type="Script" uid="uid://djd3baky5kl1o" path="res://scripts/towers/main_tower.gd" id="1_8kvdh"]
+[ext_resource type="Texture2D" uid="uid://b242xx4j7lo2u" path="res://assets/img/towers/MainTower.png" id="1_uejkh"]
+
+[node name="MainTower" type="Node2D" groups=["main_tower"]]
+script = ExtResource("1_8kvdh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_uejkh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0, 32)
+polygon = PackedVector2Array(0, 0, 31, 16, 0, 32, -31, 16)
+
+[node name="DamageArea" type="Area2D" parent="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D/DamageArea"]
+modulate = Color(0, 1, 0.73333335, 1)
+position = Vector2(4.7683716e-07, 23)
+scale = Vector2(1.4344759, 1.5024414)
+polygon = PackedVector2Array(0, 0, 31, 16, 0, 32, -31, 16)
+
+[node name="TargetPosition" type="Marker2D" parent="."]
+position = Vector2(0, 48)

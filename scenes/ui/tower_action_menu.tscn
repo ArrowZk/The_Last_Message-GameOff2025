@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjvyswmiiyyqi"]
+
+[ext_resource type="Script" uid="uid://6knn3sv33hm2" path="res://scripts/ui/tower_action_menu.gd" id="1_mrv4l"]
+[ext_resource type="Theme" uid="uid://cusp5arno4sl5" path="res://tema_general.tres" id="1_q8u73"]
+
+[node name="TowerActionMenu" type="Panel"]
+custom_minimum_size = Vector2(120, 140)
+anchors_preset = -1
+anchor_right = 0.117000006
+anchor_bottom = 0.18200001
+offset_right = -119.80801
+offset_bottom = -139.776
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_q8u73")
+script = ExtResource("1_mrv4l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.5
+offset_top = 8.5
+offset_right = -40.5
+offset_bottom = -8.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.8745098, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 25
+text = "Options"
+horizontal_alignment = 1
+
+[node name="DestroyButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Destroy"
+
+[node name="CancelButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cancel"

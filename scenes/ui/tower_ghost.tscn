@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv03urwrkhohk"]
+
+[ext_resource type="Script" uid="uid://cn8i8xaokca14" path="res://scripts/ui/tower_ghost.gd" id="1_86g4w"]
+
+[node name="TowerGhost" type="Node2D"]
+script = ExtResource("1_86g4w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

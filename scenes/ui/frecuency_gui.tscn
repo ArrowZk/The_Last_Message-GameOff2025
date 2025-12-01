@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7783h2hnvb0m"]
+
+[ext_resource type="Script" uid="uid://tpn1chss4fvm" path="res://scripts/global_frecuency_ui.gd" id="1_to7rw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_to7rw"]
+
+[sub_resource type="Theme" id="Theme_af1ak"]
+Label/styles/normal = SubResource("StyleBoxFlat_to7rw")
+
+[node name="FrecuencyGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_to7rw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FrequencyLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_af1ak")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="BlueButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "BLUE"
+
+[node name="YellowButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "YELLOW"
+
+[node name="RedButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "RED"

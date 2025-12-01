@@ -1,0 +1,13 @@
+[gd_resource type="JSON" format=3 uid="uid://dhalb26rabxxn"]
+
+[resource]
+data = [{
+"delay": 1.5,
+"enemy": "test"
+}, {
+"delay": 3.0,
+"enemy": "test"
+}, {
+"delay": 1.0,
+"enemy": "test"
+}]

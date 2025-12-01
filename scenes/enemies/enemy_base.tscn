@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d30pf6eni8sq6"]
+
+[ext_resource type="Script" uid="uid://cu448rgjrf1fm" path="res://scripts/enemies/enemy_base.gd" id="1_qty17"]
+
+[node name="EnemyBase" type="CharacterBody2D" groups=["enemies"]]
+collision_mask = 3
+script = ExtResource("1_qty17")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+animation = &""
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+simplify_path = true

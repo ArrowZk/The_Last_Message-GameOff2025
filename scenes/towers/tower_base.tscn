@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2dtellpkbh46"]
+
+[ext_resource type="Script" uid="uid://6bn7y643gpgs" path="res://scripts/towers/tower_base.gd" id="1_7bev0"]
+
+[node name="TowerBase" type="StaticBody2D"]
+script = ExtResource("1_7bev0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+
+[node name="RangeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
+
+[node name="AttackTimer" type="Timer" parent="."]
